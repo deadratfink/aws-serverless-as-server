@@ -1,0 +1,14 @@
+node_modules/
+coverage/
+readme/
+helper/
+.idea
+build
+dist
+!.jestrc.js
+__mocks__/
+
+# exclude generated data
+dynamodb/data-import/data
+
+documentation

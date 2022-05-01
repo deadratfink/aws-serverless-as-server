@@ -1,0 +1,14 @@
+{
+  "jest.showCoverageOnLoad": true,
+  "jest.debugMode": true,
+  "jest.jestCommandLine": "npm test",
+  "prettier.configPath": ".prettierrc.js",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "/node_modules/typescript/lib",
+  "eslint.options": { "configFile": ".eslintrc.js" },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  }
+}

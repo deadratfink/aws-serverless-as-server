@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+	"target": "es2020", 
+    // "outDir": "./out-tsc/spec",
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "types": ["jest", "node"],
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  // "files": ["src/test.ts", "src/polyfills.ts"],
+  "include": ["src/**/*", "test/**/*", "test/**/*.d.ts"]
+}
