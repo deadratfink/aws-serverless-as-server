@@ -6,8 +6,8 @@ Currently under construction. More to come next...
 
 ## Upcoming Features
 
-- Configure a function with Lambda informatio und run function
+- Configure a function with Lambda information und run function
 - Custom authorizer support
 - Cors support
 - Compression support
-- Request/reponse logging
+- Request/response logging
