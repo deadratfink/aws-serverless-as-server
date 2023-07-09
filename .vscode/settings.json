@@ -5,7 +5,7 @@
   "prettier.configPath": ".prettierrc.js",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "/node_modules/typescript/lib",
-  "eslint.options": { "configFile": ".eslintrc.js" },
+  "eslint.options": { "overrideConfigFile": ".eslintrc.js" },
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true

@@ -52,6 +52,7 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/explicit-function-return-type': ['error'],
     '@typescript-eslint/no-unused-vars': ['error'],
     /*
      * NOTE: you must disable the base rule as it can report incorrect errors!
