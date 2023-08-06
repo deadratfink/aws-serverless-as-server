@@ -1,4 +1,6 @@
 import { APIGatewayAuthorizerHandler, APIGatewayEvent, APIGatewayProxyResult, Handler } from 'aws-lambda';
+// import { OpenAPIObject } from 'openapi3-ts/oas31';
+import { JsonObject } from 'swagger-ui-express';
 
 /**
  * The authorizer handler information.
@@ -34,13 +36,13 @@ export interface IAuthorizerHandlerInfo {
 }
 
 /**
- * The handler information.
+ * The handler options.
  */
-export interface IHandlerInfo {
+export interface IHandlerOptions {
   /**
    * The HTTP method the handler is called for.
    */
-  method: 'get' | 'post' | 'put' | 'delete' | 'patch' | 'options' | 'head'; // TODO: more methods?
+  method: 'get' | 'post' | 'put' | 'delete' | 'patch' | 'options' | 'head' | 'trace';
   /**
    * The path of the handler.
    */
@@ -62,30 +64,35 @@ export interface IHandlerInfo {
  */
 export interface IServerlessOptions {
   /**
-   * The api ID.
+   * The API ID.
    */
-  apiId: string;
+  apiId?: string;
+  // TODO: authorizer support
+  // /**
+  //  * The authorizer Lambda handler information.
+  //  */
+  // authorizerHandlerInfo?: IAuthorizerHandlerInfo;
   /**
-   * The authorizer Lambda handler information.
-   */
-  authorizerHandlerInfo?: IAuthorizerHandlerInfo;
-  /**
-   * The AWS account ID, dummy default: `123456789012`.
+   * The AWS account ID.
+   *
+   * @default `123456789012`.
    */
   awsAccountId?: string;
   /**
-   * the AWS region, default: `eu-central-1`.
+   * the AWS region.
+   *
+   * @default `eu-central-1`.
    */
   awsRegion?: string; // TODO: allow only region names
   /**
    * The Lambda handler information.
    */
-  handlerInfos: IHandlerInfo[];
-
-  // TODO: Payload format version for all!
+  handlerOptions: IHandlerOptions[];
+  // TODO: Payload format for all versions!
   /**
    * The expected [payload format version](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer.html#http-api-lambda-authorizer.payload-format),
-   * default: 1.0.
+   *
+   * @default 1.0.
    */
   authorizerPayloadFormatVersion?: '1.0' | '2.0';
 }
@@ -93,17 +100,23 @@ export interface IServerlessOptions {
 /**
  * The server run options interface.
  */
-export interface IServerRunOptions {
+export interface IServerOptions {
   /**
-   * The port the server is running on, default: 3000.
+   * The port the server is running on.
+   *
+   * @default 3000
    */
   port?: number;
   /**
-   * Whether to use response compression if requested, default: `false`.
+   * Whether to use response compression if requested.
+   *
+   * @default `false`.
    */
   useCompression?: boolean;
   /**
-   * Whether to use CORS functionality, default: `true`.
+   * Whether to use CORS functionality.
+   *
+   * @default `true`.
    */
   useCors?: boolean;
 }
@@ -112,9 +125,16 @@ export interface IServerRunOptions {
  * The options interface.
  */
 export interface IOptions {
+  /**
+   * The Open API spec.
+   */
+  openApi: JsonObject;
+  /**
+   * The serverless options.
+   */
   serverlessOptions: IServerlessOptions;
   /**
    * The server run options.
    */
-  serverOptions?: IServerRunOptions;
+  serverOptions?: IServerOptions;
 }

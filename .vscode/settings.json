@@ -3,6 +3,7 @@
   "jest.debugMode": true,
   "jest.jestCommandLine": "npm test",
   "prettier.configPath": ".prettierrc.js",
+  "prettier.prettierPath": "./node_modules/prettier",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "/node_modules/typescript/lib",
   "eslint.options": { "overrideConfigFile": ".eslintrc.js" },

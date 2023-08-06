@@ -12,9 +12,9 @@ export async function asyncHandler(event: APIGatewayEvent, context: Context): Pr
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'text/html; charset=utf-8',
+      'Content-Type': 'application/json',
     },
-    body: '<i>Hello Async World!</i>',
+    body: JSON.stringify({ message: 'Hello Async World!' }),
   };
 }
 
@@ -29,10 +29,13 @@ export function cbHandler(event: APIGatewayEvent, context: Context, callback: Ca
   console.log('CONTEXT:', JSON.stringify(context, null, 2));
   callback(null, {
     statusCode: 200,
+    // headers: {
+    //   'Content-Type': 'text/html; charset=utf-8',
+    // },
     headers: {
-      'Content-Type': 'text/html; charset=utf-8',
+      'Content-Type': 'application/json',
     },
-    body: '<i>Hello Callback World!</i>',
+    body: JSON.stringify({ message: 'Hello Callback World!' }),
   });
 }
 
@@ -47,13 +50,15 @@ export async function postHandler(event: APIGatewayEvent, context: Context): Pro
   console.log('CONTEXT:', JSON.stringify(context, null, 2));
   return {
     statusCode: 201,
+    // headers: {
+    //   'Content-Type': event.headers['Content-Type'] || event.headers['content-type'] || 'text/plain',
+    // },
     headers: {
-      'Content-Type': event.headers['Content-Type'] || event.headers['content-type'] || 'text/plain',
+      'Content-Type': 'application/json',
     },
-    body: event.body ?? '',
+    body: JSON.stringify(event.body ?? {}),
   };
 }
-
 
 // import { EventName } from '@digital-office/de-ves-aws-lambda-logger/enums';
 // import { indent } from '@digital-office/de-ves-aws-lambda-logger/utils';
